@@ -322,206 +322,43 @@
             height: 100%;
             height: 100dvh;
             overflow: hidden;
-            background: #ff0033;
-            animation: bgflash 0.5s linear infinite;
+            background: #000;
             user-select: none;
             -webkit-user-select: none;
         }
 
-        @keyframes bgflash {
-            0%   { background: #ff0033; }
-            33%  { background: #ffee00; }
-            66%  { background: #00e5ff; }
-            100% { background: #ff0033; }
-        }
-
-        /* Ảnh nền stretch full màn hình */
+        /* Video nền giữ nguyên kích cỡ dọc, căn giữa */
         .bg-fill {
             position: absolute;
             inset: 0;
             z-index: 0;
             width: 100%;
             height: 100%;
-            object-fit: fill; /* kéo giãn ảnh phủ kín toàn màn hình */
+            object-fit: contain;
             pointer-events: none;
             user-select: none;
         }
 
-        #stage {
-            position: absolute;
-            inset: 0;
-            z-index: 1;
-            animation: shake 0.18s linear infinite;
-        }
-
-        @keyframes shake {
-            0%   { transform: translate(0, 0); }
-            25%  { transform: translate(-6px, 4px); }
-            50%  { transform: translate(5px, -5px); }
-            75%  { transform: translate(-4px, -3px); }
-            100% { transform: translate(0, 0); }
-        }
-
-
-        .rain {
-            position: absolute;
-            top: -60px;
-            pointer-events: none;
-            animation: fall var(--t, 2.5s) linear forwards;
-        }
-
-        @keyframes fall {
-            to { transform: translateY(115vh) rotate(540deg); }
-        }
-
-        .troll-center {
-            position: absolute;
-            z-index: 5;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 10px;
-            text-align: center;
-            pointer-events: none;
-            width: max-content;
-            max-width: 88vw;
-            animation: flyAround 6s ease-in-out infinite;
-        }
-
-        @keyframes flyAround {
-            0% {
-                top: 45%;
-                left: 50%;
-                transform: translate(-50%, -50%) rotate(0deg);
-            }
-            18% {
-                top: 25%;
-                left: 32%;
-                transform: translate(-50%, -50%) rotate(-6deg) scale(0.95);
-            }
-            36% {
-                top: 65%;
-                left: 30%;
-                transform: translate(-50%, -50%) rotate(5deg) scale(1.04);
-            }
-            54% {
-                top: 30%;
-                left: 68%;
-                transform: translate(-50%, -50%) rotate(-4deg) scale(0.96);
-            }
-            72% {
-                top: 70%;
-                left: 65%;
-                transform: translate(-50%, -50%) rotate(6deg) scale(1.02);
-            }
-            90% {
-                top: 38%;
-                left: 45%;
-                transform: translate(-50%, -50%) rotate(-5deg) scale(0.97);
-            }
-            100% {
-                top: 45%;
-                left: 50%;
-                transform: translate(-50%, -50%) rotate(0deg);
-            }
-        }
-
-        .troll-headline {
-            max-width: 88vw;
-            margin: 0;
-            color: #fff;
-            font-family: Impact, "Arial Black", sans-serif;
-            font-size: clamp(16px, 3.2vw, 32px);
-            font-weight: 900;
-            line-height: 1.1;
-            text-transform: uppercase;
-            -webkit-text-stroke: 1.5px #000;
-            paint-order: stroke fill;
-            text-shadow: 3px 3px 0 #000, -2px -2px 0 #f04483;
-            animation: pulse 0.35s ease-in-out infinite alternate;
-        }
-
-        @keyframes pulse {
-            from { transform: scale(0.95) rotate(-1.5deg); }
-            to   { transform: scale(1.05) rotate(1.5deg); }
-        }
-
-        .troll-counter {
-            padding: 3px 10px;
-            border: 2px solid #000;
-            border-radius: 6px;
-            background: #fff;
-            color: #d00000;
-            font-family: Impact, "Arial Black", sans-serif;
-            font-size: clamp(11px, 1.8vw, 15px);
-            transform: rotate(-3deg);
-        }
-
-        .troll-sub {
-            padding: 3px 8px;
-            border-radius: 5px;
-            background: #000;
-            color: #ffee00;
-            font-size: clamp(10px, 1.4vw, 13px);
-            font-weight: 800;
-            transform: rotate(2deg);
-        }
-
-        .troll-banner {
-            position: absolute;
-            left: 0;
-            right: 0;
-            z-index: 6;
-            overflow: hidden;
-            padding: 6px 0;
-            background: #000;
-            color: #ffee00;
-            font-family: Impact, "Arial Black", sans-serif;
-            font-size: clamp(16px, 3.5vw, 28px);
-            white-space: nowrap;
-            pointer-events: none;
-        }
-
-        .troll-banner.top    { top: 0; }
-        .troll-banner.bottom { bottom: 0; color: #ff3b6b; }
-
-        .troll-banner span {
-            display: inline-block;
-            padding-left: 100%;
-            animation: marquee 12s linear infinite;
-        }
-
-        .troll-banner.bottom span {
-            animation-direction: reverse;
-        }
-
-        @keyframes marquee {
-            to { transform: translateX(-100%); }
-        }
-
         .troll-exit {
             position: absolute;
-            top: 46px;
-            right: 10px;
+            top: 18px;
+            right: 18px;
             z-index: 10;
-            padding: 6px 12px;
+            padding: 8px 16px;
             border: 2px solid #000;
             border-radius: 8px;
             background: #fff;
             color: #000;
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 800;
             cursor: pointer;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+            transition: transform 0.15s ease, background-color 0.15s ease;
         }
 
-        @media (prefers-reduced-motion: reduce) {
-            #stage,
-            .troll-headline,
-            .troll-center {
-                animation: none;
-            }
+        .troll-exit:hover {
+            background: #f0f0f0;
+            transform: scale(1.05);
         }
 
         /* Mobile */
@@ -717,26 +554,9 @@
 
     <!-- Troll screen -->
     <div id="troll" aria-hidden="true">
-        <img class="bg-fill" src="./image.png" alt="">
-        <div id="stage"></div>
-
-        <div class="troll-banner top">
-            <span id="bannerTop"></span>
-        </div>
-
-        <div class="troll-center">
-            <h2 class="troll-headline" id="headline">🚨 TIN SỐC ĐỘNG TRỜI 😱</h2>
-            <div class="troll-counter" id="counter">999.999.900 người đang hóng biến</div>
-            <div class="troll-sub" id="sub">Vén màn bí mật chấn động thế kỷ!</div>
-        </div>
-
-        <div class="troll-banner bottom">
-            <span id="bannerBottom"></span>
-        </div>
+        <video class="bg-fill" id="trollVideo" src="./ộ.mp4" playsinline loop preload="auto"></video>
+        <button type="button" id="exitButton" class="troll-exit">✕ Đóng</button>
     </div>
-
-    <!-- Âm thanh lặp -->
-    <audio id="alertSound" src="./alert.mp3" loop preload="auto"></audio>
 
     <!-- Notification -->
     <div
@@ -766,11 +586,7 @@
         const gate = document.getElementById("gate");
         const pageFooter = document.getElementById("pageFooter");
         const troll = document.getElementById("troll");
-        const stage = document.getElementById("stage");
-        const headline = document.getElementById("headline");
-        const counter = document.getElementById("counter");
-        const sub = document.getElementById("sub");
-        const alertSound = document.getElementById("alertSound");
+        const trollVideo = document.getElementById("trollVideo");
         const exitButton = document.getElementById("exitButton");
 
         const yesButton = document.getElementById("yesButton");
@@ -852,81 +668,10 @@
         }
 
         // ===== Troll mode =====
-        const HEADLINES = [
-            "🚨 BẬT MÍ BÍ MẬT ĐỘNG TRỜI CỦA BỤT! 😱",
-            "🔥 SỐC TẬN ÓC: BỤT BỊ BẮT QUẢ TANG! 🚨",
-            "⚡ KHÔNG THỂ TIN NỔI: SỰ THẬT KINH HOÀNG VỀ BỤT! 💀",
-            "💥 BỤT CHÍNH THỨC LÊN TIẾNG SAU BÊ BỐI THẾ KỶ! 🤯",
-            "🚨 CHẤN ĐỘNG CẢ NƯỚC: BỤT ĐÃ BỊ PHƠI BÀY! 🤡",
-            "⚡ TUYÊN BỐ GÂY SỐC KHIẾN HÀNG TRIỆU NGƯỜI BẬT KHÓC! 😭",
-            "🔥 TIN NÓNG 24H: VÉN MÀN BÍ MẬT KINH ĐIỂN! 💣",
-            "😱 CẢ THẾ GIỚI BÀNG HOÀNG TRƯỚC SỰ THẬT NÀY! 🚨"
-        ];
-
-        const SUBS = [
-            "CĐM đang ráo riết truy lùng danh tính Bụt! 🕵️‍♂️",
-            "Xem ngay trước khi clip bị xoá vĩnh viễn! 🔞",
-            "Chính thức: Không thể che giấu được nữa rồi! 😱",
-            "Các chuyên gia hàng đầu cũng phải lắc đầu ngao ngán! 🤦‍♂️",
-            "Share gấp cho 10 người bạn kẻo bị phong sát! 🚨",
-            "Bí mật chấn động tam giới vừa bị rò rỉ đêm qua! 🔥",
-            "Cảnh báo: Người yếu tim tuyệt đối không nên xem! ⚠️",
-            "Sự thật ngã ngửa khiến hàng triệu người ngất lịm! 💀"
-        ];
-
-        const EMOJIS = ["🤡", "😂", "💀", "🔥", "😱", "🤣", "👀", "💸", "🚨"];
-
-        const BANNER_TEXT =
-            "🚨 TIN NÓNG ĐỘNG TRỜI 🚨 BẬT MÍ BÍ MẬT KINH HOÀNG 🚨 " +
-            "HÀNG TRIỆU NGƯỜI BÀNG HOÀNG 🚨 CHẤN ĐỘNG KHÔNG THỂ TIN NỔI 🚨 ";
-
-        document.getElementById("bannerTop").textContent =
-            BANNER_TEXT.repeat(3);
-        document.getElementById("bannerBottom").textContent =
-            BANNER_TEXT.repeat(3);
-
-        let timers = [];
-        let victims = 999999900;
-
-        const bgFill = document.querySelector(".bg-fill");
-        if (bgFill) {
-            bgFill.addEventListener("error", () => {
-                showNotice("Không tải được image.png. Hãy kiểm tra file.");
+        if (trollVideo) {
+            trollVideo.addEventListener("error", () => {
+                showNotice("Không tải được video ộ.mp4. Hãy kiểm tra file.");
             });
-        }
-
-        function rand(min, max) {
-            return min + Math.random() * (max - min);
-        }
-
-        function spawnRain() {
-            const el = document.createElement("span");
-
-            el.className = "rain";
-            el.textContent =
-                EMOJIS[Math.floor(Math.random() * EMOJIS.length)];
-            el.style.left = rand(0, 96) + "vw";
-            el.style.fontSize = rand(24, 64) + "px";
-            el.style.setProperty("--t", rand(1.6, 3.2) + "s");
-
-            stage.appendChild(el);
-            setTimeout(() => el.remove(), 3400);
-        }
-
-        function burstRain(n) {
-            for (let i = 0; i < n; i++) {
-                spawnRain();
-            }
-        }
-
-        function pick(list) {
-            return list[Math.floor(Math.random() * list.length)];
-        }
-
-        function updateCounter() {
-            victims += Math.floor(rand(1, 12));
-            counter.textContent =
-                victims.toLocaleString("vi-VN") + " người đang hóng biến";
         }
 
         function startTroll() {
@@ -935,40 +680,23 @@
             troll.style.display = "block";
             troll.setAttribute("aria-hidden", "false");
 
-            headline.textContent = pick(HEADLINES);
-            sub.textContent = pick(SUBS);
-
             if (troll.requestFullscreen) {
                 troll.requestFullscreen().catch(() => {});
             }
 
-            alertSound.currentTime = 0;
-            alertSound.play().catch(() => {
-                showNotice(
-                    "Không phát được âm thanh. Hãy kiểm tra file alert.mp3."
-                );
-            });
-
-            victims = 999999900;
-            burstRain(15);
-            updateCounter();
-
-            timers.push(setInterval(spawnRain, 150));
-            timers.push(setInterval(updateCounter, 90));
-            timers.push(setInterval(() => {
-                headline.textContent = pick(HEADLINES);
-                sub.textContent = pick(SUBS);
-            }, 1200));
+            if (trollVideo) {
+                trollVideo.currentTime = 0;
+                trollVideo.play().catch(() => {
+                    showNotice("Không thể phát video ộ.mp4.");
+                });
+            }
         }
 
         function stopTroll() {
-            timers.forEach(clearInterval);
-            timers = [];
-
-            alertSound.pause();
-            alertSound.currentTime = 0;
-
-            stage.innerHTML = "";
+            if (trollVideo) {
+                trollVideo.pause();
+                trollVideo.currentTime = 0;
+            }
 
             troll.style.display = "none";
             troll.setAttribute("aria-hidden", "true");
@@ -982,10 +710,16 @@
 
         yesButton.addEventListener("click", startTroll);
         noButton.addEventListener("click", startTroll);
-        exitButton.addEventListener("click", stopTroll);
+        if (exitButton) {
+            exitButton.addEventListener("click", stopTroll);
+        }
 
-        // Chạm vào màn hình để rơi thêm emoji
-        stage.addEventListener("pointerdown", () => burstRain(5));
+        // Thoát khi nhấn phím Escape
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && troll.style.display === "block") {
+                stopTroll();
+            }
+        });
 
         // Thoát fullscreen (Esc) thì dừng luôn
         document.addEventListener("fullscreenchange", () => {
@@ -994,13 +728,6 @@
                 troll.style.display === "block"
             ) {
                 stopTroll();
-            }
-        });
-
-        // Lỗi file âm thanh
-        alertSound.addEventListener("error", () => {
-            if (troll.style.display === "block") {
-                showNotice("Không thể tải alert.mp3. Hãy kiểm tra file.");
             }
         });
     </script>
